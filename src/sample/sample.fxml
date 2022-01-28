@@ -1,8 +1,37 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar nodeOrientation="LEFT_TO_RIGHT">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label prefHeight="111.0" prefWidth="603.0" />
+      <CheckBox mnemonicParsing="false" prefHeight="22.0" prefWidth="106.0" text="Numbers" />
+      <CheckBox mnemonicParsing="false" prefHeight="25.0" prefWidth="601.0" text="Upper letter" />
+      <CheckBox mnemonicParsing="false" prefHeight="27.0" prefWidth="648.0" text="Lower Letter" />
+      <CheckBox mnemonicParsing="false" prefHeight="25.0" prefWidth="596.0" text="Special Symbols" />
+      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="OK" />
+      <TextField nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="253.0" />
+      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="Cancel" />
+
+   </children>
+</VBox>
