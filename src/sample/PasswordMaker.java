@@ -1,53 +1,74 @@
 package sample;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 public class PasswordMaker {
-    //строки из которых будут формироваться пароли
-    private static final String numbers = "0123456789"; //числа
-    private static final String upperLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Латиница с большими буквами
-    private static final String lowerLetter = "abcdefghijklmnopqrstuvwxyz"; // Латиница с маленькими буквами
-    private static final String specialSymbols = " ~`!@#$%^&*()_+}]{[:;\"\'\\/|?<>,."; // специальные символы
+    private static final String symbols =   "0123456789" +                                  // Числа
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +                  // Латиница с большими буквами
+            "abcdefghijklmnopqrstuvwxyz" +                  // Латиница с маленькими буквами
+            " ~`!@#$%^&*()_+}]{[:;\"'\\/|?<>,.";            // Специальные символы
 
-    private int passwordSize = 0; // размер пароля
-    private final boolean areThereNumbers;// есть ли числа в пароле
-    private final boolean areThereUpperLetter;// есть ли прописные латинские буквы в пароле
-    private final boolean areThereLowerLetter;// есть ли строчные латинские буквы в пароле
-    private final boolean areThereSpecialSymbols;// есть ли специальные символы в пароле
+    private static final char[] arraySymbols = symbols.toCharArray();
 
-    private int numberOfParts; // количество частей
+    int passwordSize = 0;               // размер пароля
+    boolean areThereNumbers;            // есть ли числа в пароле
+    boolean areThereUpperLetter;        // есть ли прописные латинские буквы в пароле
+    boolean areThereLowerLetter;        // есть ли строчные латинские буквы в пароле
+    boolean areThereSpecialSymbols;     // есть ли специальные символы в пароле
 
-    private  ArrayList<Character> listOfCharactersPassword = new ArrayList<>(); // лист для сгенерированных символов
-
-    public PasswordMaker(int passwordSize, boolean areThereNumbers, boolean areThereUpperLetter, boolean areThereLowerLetter, boolean areThereSpecialSymbols)throws IllegalArgumentException{
+    public PasswordMaker(int passwordSize,
+                  boolean areThereNumbers,
+                  boolean areThereUpperLetter,
+                  boolean areThereLowerLetter,
+                  boolean areThereSpecialSymbols
+    ) {
         this.passwordSize = passwordSize;
         this.areThereNumbers = areThereNumbers;
         this.areThereUpperLetter = areThereUpperLetter;
         this.areThereLowerLetter = areThereLowerLetter;
         this.areThereSpecialSymbols = areThereSpecialSymbols;
-        if(areThereNumbers) numberOfParts++;
-        if(areThereUpperLetter) numberOfParts++;
-        if(areThereLowerLetter) numberOfParts++;
-        if(areThereSpecialSymbols) numberOfParts++;
-        if(numberOfParts == 0) throw new IllegalArgumentException("You choose nothing. Please try again. Thanks");// проверка на количество частей
-        //если частей = 0, пробрасывается исключение
+
+        if (!areThereNumbers && !areThereUpperLetter &&
+                !areThereLowerLetter && !areThereSpecialSymbols) {              // проверка на количество частей
+            throw new IllegalArgumentException("You choose nothing. Please try again. Thanks"); //если  ничего не выбрано, пробрасывается исключение
+        }
     }
 
-    private int numberOfNumbers = (passwordSize / numberOfParts)+ (passwordSize % numberOfParts);
-    private int numberOfUpperSymbols;
-    private int numberOfLowerSymbols;
-    private int numberOfSpecialSymbols;
-
-
-    private formParts(int passwordSize, boolean areThereNumbers, boolean areThereUpperLetter, boolean areThereLowerLetter, boolean areThereSpecialSymbols){
-        if(areThereNumbers)
-            numberOfNumbers = passwordSize /
-
+    public char[] formPassword() { //формирование символов для пароля
+        char[] forPsswrdSymbols = new char[passwordSize];
+        for (int i = 0; i < passwordSize;) {
+            if (this.areThereNumbers) {
+                forPsswrdSymbols[i] = arraySymbols[(int) (Math.random() * 10)];
+                if(i >= passwordSize-1) break;
+                i++;
+            }
+            if (areThereUpperLetter){
+                forPsswrdSymbols[i] = arraySymbols[(int) (Math.random() * (36 - 10)) +10];
+                if(i >= passwordSize-1) break;
+                i++;
+            }
+            if (areThereLowerLetter){
+                forPsswrdSymbols[i] = arraySymbols[(int) (Math.random() * (62 - 36)) +36];
+                if(i >= passwordSize-1) break;
+                i++;
+            }
+            if (areThereSpecialSymbols){
+                forPsswrdSymbols[i] = arraySymbols[(int) (Math.random() * (93 - 62)) + 62];
+                if(i >= passwordSize-1) break;
+                i++;
+            }
+        }
+        return forPsswrdSymbols;
     }
 
-    private String formPassword(){return "";}
-
-
-
-
+    public String shuffleSymbols(char[] arr) { //перемешать символы
+        Random rnd = new Random();
+        for(int i = 0; i < arr.length; i++) {
+            int index = rnd.nextInt(i + 1);
+            char a = arr[index];
+            arr[index] = arr[i];
+            arr[i] = a;
+        }
+        return String.valueOf(arr);
+    }
 }
