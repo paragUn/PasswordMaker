@@ -3,11 +3,12 @@ package sample;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.InputStream;
+
+
 
 public class Main extends Application {
 
@@ -17,23 +18,20 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello. Here's password maker!");
-        primaryStage.setWidth(500);
-        primaryStage.setHeight(400);
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/sample.fxml"));
+        Controller controller = loader.getController();
+        Parent root = loader.load();
+
+        Scene primaryScene = new Scene(root);
+        primaryStage.setScene(primaryScene);
 
         InputStream iconStream =
-        getClass().getResourceAsStream("/images/someImage.png");
+        getClass().getResourceAsStream("/sample/Security-Password-2-icon.png");
         Image image = new Image(iconStream);
         primaryStage.getIcons().add(image);
 
-        Button buttonOK = new Button();
-        Button buttonCancel = new Button();
-
-
         primaryStage.show();
     }
-
-
-
 }

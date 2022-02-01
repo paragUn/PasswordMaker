@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?language javascript?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <MenuBar nodeOrientation="LEFT_TO_RIGHT">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem  onAction="#closeApp" mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem onAction="#clearTextField" mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -24,14 +25,15 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label prefHeight="111.0" prefWidth="603.0" />
-      <CheckBox mnemonicParsing="false" prefHeight="22.0" prefWidth="106.0" text="Numbers" />
-      <CheckBox mnemonicParsing="false" prefHeight="25.0" prefWidth="601.0" text="Upper letter" />
-      <CheckBox mnemonicParsing="false" prefHeight="27.0" prefWidth="648.0" text="Lower Letter" />
-      <CheckBox mnemonicParsing="false" prefHeight="25.0" prefWidth="596.0" text="Special Symbols" />
-      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="OK" />
-      <TextField nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="253.0" />
-      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="Cancel" />
+      <TextArea fx:id="OutputPassword" prefHeight="100" prefWidth="160" />
+      <Label  prefHeight="20.0" prefWidth="160.0" text="Please, input number:" />
+      <TextField fx:id="InputNumbersOfSymbols" nodeOrientation="LEFT_TO_RIGHT" prefHeight="18.0" prefWidth="160" />
+      <CheckBox fx:id="Numbers" mnemonicParsing="false" prefHeight="22.0" prefWidth="160.0" text="Numbers" />
+      <CheckBox fx:id="UpperLetter" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Upper letter" />
+      <CheckBox fx:id="LowerLetter" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="Lower Letter" />
+      <CheckBox fx:id="SpecialSymbols" mnemonicParsing="false" prefHeight="25.0" prefWidth="160" text="Special Symbols" />
+      <Button fx:id="OKButton" onAction="#buttonOKClicked" prefHeight="42.0" prefWidth="160.0" text="OK" />
+      <Button fx:id="CancelButton" onAction="#closeApp" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="Cancel" />
 
    </children>
 </VBox>
