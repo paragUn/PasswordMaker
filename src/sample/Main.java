@@ -31,7 +31,7 @@ public class Main extends Application {
         getClass().getResourceAsStream("/sample/Security-Password-2-icon.png");
         Image image = new Image(iconStream);
         primaryStage.getIcons().add(image);
-
+        
         primaryStage.show();
     }
 }
