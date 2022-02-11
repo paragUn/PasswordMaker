@@ -37,7 +37,7 @@ public class PasswordMaker {
     public char[] formPassword() { //формирование символов для пароля
         char[] forPsswrdSymbols = new char[passwordSize];
         for (int i = 0; i < passwordSize;) {
-            if (this.areThereNumbers) {
+            if (areThereNumbers) {
                 forPsswrdSymbols[i] = arraySymbols[(int) (Math.random() * 10)];
                 if(i >= passwordSize-1) break;
                 i++;
