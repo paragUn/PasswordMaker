@@ -1,0 +1,28 @@
+@startuml
+
+Main <|-- Applications
+Main-PasswordMaker
+PasswordMaker-Controller
+Controller --sample.fxml
+
+class Main {
+public static void main(String[] args)
+public void start(Stage primaryStage)
+}
+
+class Controller{
+public void buttonOKClicked
+public void clearTextField
+public void closeApp
+}
+class PasswordMaker{
+    int passwordSize = 0;
+    boolean areThereNumbers;
+    boolean areThereUpperLetter;
+    boolean areThereLowerLetter;
+    boolean areThereSpecialSymbols;
+    public PasswordMaker(...)
+    public char[] formPassword()
+    public String shuffleSymbols(char[] arr)
+}
+@enduml
